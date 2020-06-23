@@ -17,10 +17,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
-    TextView nome, email, mobile;
+    TextView nome, genero , nota , lancamento , sinopse;
     Button btnCarregaDados;
 
-    String url_json = "http://192.168.0.103/Projetovolleyapi/informacoes.php";
+    String url_json = "http://192.168.0.103/Projetovolleyapi/filme.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +29,10 @@ public class MainActivity extends AppCompatActivity {
 
         //declaro os objetos xml para java
         nome = findViewById(R.id.txtNome);
-        email = findViewById(R.id.txtEmail);
-        mobile = findViewById(R.id.txtMobile);
+        genero = findViewById(R.id.txtGenero);
+        nota = findViewById(R.id.txtNota);
+        lancamento = findViewById(R.id.txtLancamento);
+        sinopse = findViewById(R.id.txtSinopse);
 
         btnCarregaDados = findViewById(R.id.btnCarregaInformacoes);
 
@@ -44,8 +46,10 @@ public class MainActivity extends AppCompatActivity {
                                 try {
                                     //Os nomes recebidos pelo response.get deverá ter o mesmo nome dos campos da tabela php
                                     nome.setText(response.getString("Nome"));
-                                    email.setText(response.getString("Email"));
-                                    mobile.setText(response.getString("Mobile"));
+                                    genero.setText(response.getString("Genero"));
+                                    nota.setText(response.getString("Nota"));
+                                    lancamento.setText(response.getString("Lancamento"));
+                                    sinopse.setText(response.getString("Sinopse"));
                                 } catch (JSONException e) {
                                     Toast.makeText(getApplicationContext(),
                                             "Nenhum nome encontrado...",
